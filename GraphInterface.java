@@ -14,12 +14,39 @@ public interface GraphInterface<T> extends BasicGraphInterface<T>,
 
    // Constructors
    // Boolean method
-   /*isEdge(int source, int target);
+   /** 
+      @return 
+      @param source 
+      @param target  */
+   public boolean isEdge(int source, int target);
+
    // Methods:  
-   addEdge(int source, int target);
-   getLabel(int vertex);
-   neighbors(int vertex);
-   removeEdge(int source, int target);
-   setLabel(int vertex, E newLabel);
-   size();*/
+   /** 
+      @param source 
+      @param target  */
+   public void addEdge(int source, int target);
+
+   /** 
+      @return 
+      @param vertex  */
+   public E getLabel(int vertex);
+
+   /** 
+      @return 
+      @param vertex  */
+   public int[] neighbors(int vertex);
+
+   /** 
+      @param source 
+      @param target  */
+   public void removeEdge(int source, int target);
+
+   /** 
+      @param vertex 
+      @param newLabel  */
+   public void setLabel(int vertex, E newLabel);
+
+   /** 
+      @return */
+   public int size();
 }
