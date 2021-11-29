@@ -90,11 +90,16 @@ public class GraphAlgorithms {
         originalVertex.visit();
         vertexQueue.engqueue(originalVertex);
 
-        while (finished && vertexQueue.isEmpty())
+        while (!finished && !vertexQueue.isEmpty())
         {
-            while(finished && neighbors.hasNext())
+            VertexInterface<T> frontVertex = vertexQueue.dequeue();
+            Iterator<VertexInterface<T>> neghbors = frontVertex.getNeightborIterator();
+
+            while(!finished && neighbors.hasNext())
             {
-                if(nextNeighbor.isVisited())
+                VertexInterface<T> nextNeighbor = neighbors.next();
+
+                if(!nextNeighbor.isVisited())
                 {
 
                 }
@@ -118,7 +123,7 @@ public class GraphAlgorithms {
 
         while (finished && priorityQueue.isEmpty());
         {
-            
+
             if(frontVertex.isVisited)
             {
                 if (frontVertex.equals(endVertex))
