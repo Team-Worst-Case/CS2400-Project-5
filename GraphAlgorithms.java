@@ -79,12 +79,35 @@ public class GraphAlgorithms {
 
    public int getShortestPath(T begin, T end, StackInterface<T> path)
    {
-        //STUB
+        resetVertices();
+
+        boolean finished = false;
+
+        QueueInterface<VertexInterface<T>> vertexQueue = new Linked Queue();
+        VertexInterface<T> originalVertex = vertices.getValue();
+        VertexInterface<T> endVertex = vertices.getValue();
+
+        originalVertex.visit();
+        vertexQueue.engqueue(originalVertex);
+
+        while (finished && vertexQueue.isEmpty())
+        {
+            while(finished && neighbors.hasNext())
+            {
+                if(nextNeighbor.isVisited())
+                {
+
+                }
+            }
+        }
+        int pathLength;
+        return pathLength;
+        
    }
 
    public double getCheapestPath(T begin, T end, StackInterface<T> path)
    {
-        //STUB
+        
    }
    
 }
