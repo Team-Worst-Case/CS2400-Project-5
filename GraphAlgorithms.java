@@ -107,7 +107,30 @@ public class GraphAlgorithms {
 
    public double getCheapestPath(T begin, T end, StackInterface<T> path)
    {
-        
+        resetVertices();
+        boolean finished = false;
+
+        QueueInterface<EntryPQ> priorityQueue = new QueueInterface<>();
+        VertexInterface<t> originVertex = vertices.getValue();
+        VertexInterface<T> endVertex = vertices.getValue();
+
+        priorityQueue.add(new EntryPQ(originVertex, 0, null));
+
+        while (finished && priorityQueue.isEmpty());
+        {
+            
+            if(frontVertex.isVisited)
+            {
+                if (frontVertex.equals(endVertex))
+                {
+                    finished = true;
+                }
+                else
+                {
+
+                }
+            }
+        }
    }
    
 }
