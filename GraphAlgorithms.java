@@ -83,12 +83,12 @@ public class GraphAlgorithms {
 
         boolean finished = false;
 
-        QueueInterface<VertexInterface<T>> vertexQueue = new Linked Queue();
-        VertexInterface<T> originalVertex = vertices.getValue();
-        VertexInterface<T> endVertex = vertices.getValue();
+        QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<>();
+        VertexInterface<T> originVertex = vertices.getValue(begin);
+        VertexInterface<T> endVertex = vertices.getValue(end);
 
-        originalVertex.visit();
-        vertexQueue.engqueue(originalVertex);
+        originVertex.visit();
+        vertexQueue.engqueue(originVertex);
 
         while (!finished && !vertexQueue.isEmpty())
         {
@@ -101,11 +101,31 @@ public class GraphAlgorithms {
 
                 if(!nextNeighbor.isVisited())
                 {
+                    nextNeighbor.visit();
+                    nextNeighbor.setCost(frontVertex.getCost());
+                    nextNeighbor.setPredecessor(frontVertex);
+                    vertexQueue.enqueue(nextNeighbor);
 
+                    
                 }
+                if (nextNeighbor.equals(endVertex))
+                        finished = true;
             }
+            
+
+        
         }
-        int pathLength;
+        int pathLength = (int)endVertex.getCost();
+        path.push(endVertex.getLabel());
+        VertexInterface<T> vertex = endVertex;
+
+        while (vertex.hasPredecessor())
+        {
+            vertex = vertex.getPredecessor();
+            path.push(vertex.getLabel());
+        }
+
+        
         return pathLength;
         
    }
