@@ -64,7 +64,17 @@ public class GraphAlgorithms {
 
    public StackInterface<T> getTopologicalOrder()
    {
-        //STUB
+       resetVertices();
+       StackInterface<T> vertexStack = new LinkedStack<>();
+       int numberOfVertices = //?;
+
+       for (counter = 1; counter <= numberOfVertices; ++counter);
+       {
+           VertexInterface<T> nextVertex = //?;
+           vertexStack.push(nextVertex.getLabel());
+       }
+
+       return vertexStack;
    }
 
    public int getShortestPath(T begin, T end, StackInterface<T> path)
