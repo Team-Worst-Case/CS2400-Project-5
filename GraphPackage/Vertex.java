@@ -109,7 +109,7 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
 
        private NeighborIterator() {
 
-       edges = edgeList.getIterator<T>();
+       edges = edgeList.iterator();
       } // end default constructor
       
       public boolean hasNext()
