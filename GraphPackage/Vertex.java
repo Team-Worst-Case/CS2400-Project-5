@@ -108,13 +108,13 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
 
        private NeighborIterator() {
 
-       edges = edgeList.iterator();
-      } 
+       edges = edgeList.getIterator();
+      } // end default constructor
       
       public boolean hasNext()
       {
           return edges.hasNext();
-      } 
+      } // end hasNext
       
       public VertexInterface<T> next()
       {
@@ -129,14 +129,35 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
               throw new NoSuchElementException();
           
           return nextNeighbor;
-      } 
+      } // end next
       
       public void remove()
       {
           throw new UnsupportedOperationException();
-      }
-  } 
+      } // end remove
+  } // end NeighborIterator
 
 
+  public boolean hasNeighbor()
+{
+return !edgeList.isEmpty();
+} // end hasNeighbor
+
+  public VertexInterface<T> getUnvisitedNeighbor()
+  {
+  VertexInterface<T> result = null;
+  Iterator<VertexInterface<T>> neighbors = getNeighborIterator();
+  while ( neighbors.hasNext() && (result == null) )
+  {
+  VertexInterface<T> nextNeighbor = neighbors.next();
+  if (!nextNeighbor.isVisited())
+  result = nextNeighbor;
+  } // end while
+  return result;
+  } // end getUnvisitedNeighbor
+  
+  
+  
+  
     }
 
