@@ -106,7 +106,7 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
     {
        private Iterator <Edge> edges;
 
-       private NeighborIterator();
+       private NeighborIterator() {
 
        edges = edgeList.iterator();
       } 
