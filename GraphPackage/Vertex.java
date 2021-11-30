@@ -157,6 +157,32 @@ return !edgeList.isEmpty();
   } // end getUnvisitedNeighbor
   
   @Override
+  public void setPredecessor(VertexInterface<T> predecessor) {
+      previousVertex = predecessor;
+  }
+
+  @Override
+  public VertexInterface<T> getPredecessor() {
+      return previousVertex;
+  }
+
+  @Override
+  public boolean hasPredecessor() {
+      if (previousVertex != null)
+          return true;
+      return false;
+  }
+
+  public void setCost(double newCost) {
+      cost = newCost;
+  }
+
+  public double getCost() {
+      return cost;
+
+
+  
+  
   public boolean equals(Object other)
 {
 boolean result;
