@@ -90,7 +90,7 @@ public class GraphAlgorithms {
         VertexInterface<T> endVertex = vertices.getValue(end);
 
         originVertex.visit();
-        vertexQueue.engqueue(originVertex);
+        vertexQueue.enqueue(originVertex);
 
         while (!finished && !vertexQueue.isEmpty())
         {
