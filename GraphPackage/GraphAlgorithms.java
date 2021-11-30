@@ -98,6 +98,7 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
         {
             VertexInterface<T> frontVertex = vertexQueue.dequeue();
             Iterator<VertexInterface<T>> neghbors = frontVertex.getNeightborIterator();
+            frontVertex.getNeighborIterator();
 
             while(!finished && neighbors.hasNext())
             {
@@ -109,15 +110,10 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
                     nextNeighbor.setCost(frontVertex.getCost());
                     nextNeighbor.setPredecessor(frontVertex);
                     vertexQueue.enqueue(nextNeighbor);
-
-                    
                 }
                 if (nextNeighbor.equals(endVertex))
                         finished = true;
             }
-            
-
-        
         }
         int pathLength = (int)endVertex.getCost();
         path.push(endVertex.getLabel());
@@ -129,9 +125,7 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
             path.push(vertex.getLabel());
         }
 
-        
-        return pathLength;
-        
+        return pathLength;    
    }
 
    public double getCheapestPath(T begin, T end, StackInterface<T> path)
