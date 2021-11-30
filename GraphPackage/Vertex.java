@@ -97,4 +97,8 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
         return connect(endVertex, 0);
     } 
 
+    public Iterator <VertexInterface<T>> getNeighborIterator()
+    {
+       return new NeightborIterator();
+    }
 
