@@ -50,7 +50,7 @@ public class GraphAlgorithms<T> implements GraphAlgorithmsInterface<T> {
 
         while (!vertexStack.isEmpty())
         {
-            VertexInterface<T> topVertex = vertextStack.peek();
+            VertexInterface<T> topVertex = vertexStack.peek();
             VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
 
             if (nextNeighbor != null)
