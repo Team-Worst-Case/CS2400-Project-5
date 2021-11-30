@@ -1,5 +1,6 @@
 import GraphPackage.VertexInterface;
 import java.util.Iterator;
+import ADTPackage.*;
 
 public class GraphAlgorithms {
 
