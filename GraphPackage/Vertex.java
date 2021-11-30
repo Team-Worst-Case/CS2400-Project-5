@@ -2,7 +2,7 @@ package GraphPackage;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.LinkedList;
-import ADTPackage.*;
+
 
 class Vertex<T> implements VertexInterface<T>
 {
