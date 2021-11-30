@@ -102,3 +102,41 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
        return new NeightborIterator();
     }
 
+    private class NeighborIterator implements Iterator <VertexInterface<T>>
+    {
+       private Iterator <Edge> edges;
+
+       private NeighborIterator();
+
+       edges = edgeList.iterator();
+      } 
+      
+      public boolean hasNext()
+      {
+          return edges.hasNext();
+      } 
+      
+      public VertexInterface<T> next()
+      {
+          VertexInterface<T> nextNeighbor = null;
+          
+          if (edges.hasNext())
+          {
+              Edge edgeToNextNeighbor = edges.next();
+              nextNeighbor = edgeToNextNeighbor.getEndVertex();
+          }
+          else
+              throw new NoSuchElementException();
+          
+          return nextNeighbor;
+      } 
+      
+      public void remove()
+      {
+          throw new UnsupportedOperationException();
+      }
+  } 
+
+
+    }
+
