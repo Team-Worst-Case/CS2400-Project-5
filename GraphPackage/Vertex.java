@@ -179,27 +179,18 @@ return !edgeList.isEmpty();
 
   public double getCost() {
       return cost;
-
+  }
 
   
   
-  public boolean equals(Object other)
+public boolean equals(Object other)
 {
 boolean result;
 if ((other == null) || (getClass() != other.getClass()))
-result = false;
-else
-{ // The cast is safe within this else clause
-@SuppressWarnings("unchecked")
-Vertex<T> otherVertex = (Vertex<T>)other;
-result = label.equals(otherVertex.label);
+result = false; else
+{ // The cast is safe within this else clause @SuppressWarnings("unchecked")
+Vertex<T> otherVertex = (Vertex<T>)other; result = label.equals(otherVertex.label);
 } // end if
-return result;
-} // end equals
-
-
-
-  
-  
-    }
+return result; } // end equals
+}
 
