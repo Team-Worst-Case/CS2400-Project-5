@@ -5,6 +5,8 @@ import ADTPackage.*;
 
 public class GraphAlgorithms<T> implements GraphAlgorithmsInterface<T> {
 
+    private Vertex[] vertices;
+    
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
         resetVertices();
