@@ -136,26 +136,58 @@ public class GraphAlgorithms {
         boolean finished = false;
 
         QueueInterface<EntryPQ> priorityQueue = new QueueInterface<>();
-        VertexInterface<t> originVertex = vertices.getValue();
-        VertexInterface<T> endVertex = vertices.getValue();
+        VertexInterface<t> originVertex = vertices.getValue(begin);
+        VertexInterface<T> endVertex = vertices.getValue(end);
 
         priorityQueue.add(new EntryPQ(originVertex, 0, null));
 
-        while (finished && priorityQueue.isEmpty());
+        while (!finished && !priorityQueue.isEmpty());
         {
+            EntryPQ frontEntry = priorityQueue.remove();
+            VertexInterface<T> frontVertex = frontEntry.getvertex();
+
 
             if(frontVertex.isVisited)
             {
+                frontVertex.visit();
+                frontVertex.setCost(frontEntry.getCost());
+                frontVertex.setPredecessor(fronEntry.getPredecessor());
+
+
                 if (frontVertex.equals(endVertex))
-                {
                     finished = true;
-                }
                 else
                 {
+                    Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+                    Iterator<Double> edgeWeights = frontVertex.getWeightIterator();
+
+                    while(neightbors.hasNext())
+                    {
+                        VertexInterface<T> nextNeighbor = neighbors.next();
+                        Double weightOfEdgeToNeighbor = edgeWeights.next();
+
+                        if(nextNeighbor.isVisited())
+                        {
+                            double nextCost = weightOfEdgeToNeighbor + frontVertex.getCost();
+                            priorityQueue.add(newEntryPQ(nextNeighbor, nextCost, frontVertex));
+                        }
+                    }
 
                 }
             }
         }
+
+        double pathCost = endVertex.getCost();
+        path.push(endVertex.getLabel());
+        VertexInterface<T> vertex = endVertex;
+
+        while (vertex.hasPredecessor())
+        {
+            vertex = vertex.getPredecessor();
+            path.push(vertex.getLabel());
+        }
+
+        return pathCost;
    }
    
 }
