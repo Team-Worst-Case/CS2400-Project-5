@@ -103,7 +103,7 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
        return new NeightborIterator();
     }
 
-    private class NeighborIterator implements Iterator <VertexInterface<T>>
+    public class NeighborIterator implements Iterator <VertexInterface<T>>
     {
        private Iterator <Edge> edges;
 
