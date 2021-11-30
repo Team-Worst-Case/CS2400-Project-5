@@ -194,5 +194,5 @@ public boolean equals(Object other)
        Vertex<T> otherVertex = (Vertex<T>)other; result = label.equals(otherVertex.label);
    } // end if
 return result; } // end equals
-}
+} // end Vertex
 
