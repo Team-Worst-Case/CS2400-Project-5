@@ -24,7 +24,7 @@ public class  JUnit
             graphV.addEdge("C", "B");
 
             System.out.println("Breadth-first traversal of graph with A as starting vertex:");
-            System.out.println(graphV.getBreadthFirstTraversal("A"));
+            //System.out.println(graphV.getBreadthFirstTraversal("A"));
 
             //assertEquals("A", "A");
         //}
