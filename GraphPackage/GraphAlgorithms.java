@@ -74,6 +74,7 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
        for (counter = 1; counter <= numberOfVertices; ++counter);
        {
            VertexInterface<T> nextVertex = //?;
+           nextVertex.visit();
            vertexStack.push(nextVertex.getLabel());
        }
 
