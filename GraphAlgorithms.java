@@ -65,7 +65,7 @@ public class GraphAlgorithms {
    {
        resetVertices();
        StackInterface<T> vertexStack = new LinkedStack<>();
-       int numberOfVertices = //?;
+       int numberOfVertices = getNumberOfVertices();
 
        for (int counter = 1; counter <= numberOfVertices; ++counter);
        {
