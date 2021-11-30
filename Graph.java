@@ -1,16 +1,16 @@
-public class Graph<E> implements GraphInterface<T>
+public class Graph<T> implements GraphInterface<T>
 {
     private boolean[] [] edges; // edges[i] [j] is true if there is a vertex from i to j
-    private E[] labels; // labels[i] contains the label for vertex i
+    private T[] labels; // labels[i] contains the label for vertex i
 
     public Graph(int n)
     {
         edges = new boolean[n] [n]; // All values initially false
-        labels = (E[]) new Object[n]; // All values initially null
+        labels = (T[]) new Object[n]; // All values initially null
     }
 
     //Accessor method to get the label of a vertex of this Graph     
-    public E getLabel(int vertex)
+    public T getLabel(int vertex)
     {        
         return labels[vertex];    
     }   
@@ -55,7 +55,7 @@ public class Graph<E> implements GraphInterface<T>
     }    
     
     // Change the label of a vertex of this Graph    
-    public void setLabel(int vertex, E newLabel) 
+    public void setLabel(int vertex, T newLabel) 
     {        
         labels[vertex] = newLabel;    
     }    

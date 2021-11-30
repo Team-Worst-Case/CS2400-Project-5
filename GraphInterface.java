@@ -29,7 +29,7 @@ public interface GraphInterface<T> extends BasicGraphInterface<T>,
    /** 
       @return 
       @param vertex  */
-   public E getLabel(int vertex);
+   public T getLabel(int vertex);
 
    /** 
       @return 
@@ -44,7 +44,7 @@ public interface GraphInterface<T> extends BasicGraphInterface<T>,
    /** 
       @param vertex 
       @param newLabel  */
-   public void setLabel(int vertex, E newLabel);
+   public void setLabel(int vertex, T newLabel);
 
    /** 
       @return */
