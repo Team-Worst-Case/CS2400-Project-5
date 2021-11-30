@@ -1,8 +1,9 @@
+package GraphPackage;
 import GraphPackage.VertexInterface;
 import java.util.Iterator;
 import ADTPackage.*;
 
-public class GraphAlgorithms {
+public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgorithmsInterface<T> {
 
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {

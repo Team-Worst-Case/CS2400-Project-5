@@ -6,7 +6,7 @@ package GraphPackage;
    @author Timothy M. Henry
    @version 5.0
 */
-public interface GraphInterface<T>
+public interface GraphInterface<T> extends GraphAlgorithmsInterface<T>
 {
    //private boolean[] [] edges; // edges[i] [j] is true if there is a vertex from i to j
    //private E[] labels; // labels[i] contains the label for vertex i

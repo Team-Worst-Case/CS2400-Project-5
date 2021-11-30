@@ -10,7 +10,7 @@ public class GraphTest
         //public void testGraphs() {
             //System.out.println("started... ");
 
-            GraphAlgorithmsInterface<String> graphV = new GraphAlgorithmsInterface<>();
+            Graph<String> graphV = new Graph<>();
             graphV.addEdge("A", "B");
             graphV.addEdge("A", "D");
             graphV.addEdge("A", "E");
