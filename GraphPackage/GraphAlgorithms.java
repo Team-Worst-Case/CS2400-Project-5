@@ -3,13 +3,13 @@ import GraphPackage.VertexInterface;
 import java.util.Iterator;
 import ADTPackage.*;
 
-public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgorithmsInterface<T> {
+public class GraphAlgorithms<T> implements GraphAlgorithmsInterface<T> {
 
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
         resetVertices();
-        QueueInterface<T> traversalOrder = new LinkedQueue<T>();
-        QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<VertexInterface<T>>();
+        QueueInterface<T> traversalOrder = new Queue<T>();
+        QueueInterface<VertexInterface<T>> vertexQueue = new Queue<VertexInterface<T>>();
 
         VertexInterface<T> originVertex = vertices.getValue(origin);
         originVertex.visit();
@@ -40,8 +40,8 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
    {
         //Assume graph is not empty
         resetVertices();
-        QueueInterface<T> traversalOrder = new LinkedQueue<T>();
-        StackInterface<VertexInterface<T>> vertexStack = new LinkedStack<> ();
+        QueueInterface<T> traversalOrder = new Queue<T>();
+        StackInterface<VertexInterface<T>> vertexStack = new Stack<> ();
 
         VertexInterface<T> originVertex = vertices.getValue(origin);
         originVertex.visit();
@@ -68,12 +68,13 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
    public StackInterface<T> getTopologicalOrder()
    {
        resetVertices();
-       StackInterface<T> vertexStack = new LinkedStack<>();
+       StackInterface<T> vertexStack = new Stack<>();
        int numberOfVertices = getNumberOfVertices();
 
        for (counter = 1; counter <= numberOfVertices; ++counter);
        {
            VertexInterface<T> nextVertex = //?;
+           nextVertex.visit();
            vertexStack.push(nextVertex.getLabel());
        }
 
@@ -86,7 +87,7 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
 
         boolean finished = false;
 
-        QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<>();
+        QueueInterface<VertexInterface<T>> vertexQueue = new Queue<>();
         VertexInterface<T> originVertex = vertices.getValue(begin);
         VertexInterface<T> endVertex = vertices.getValue(end);
 
@@ -97,6 +98,7 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
         {
             VertexInterface<T> frontVertex = vertexQueue.dequeue();
             Iterator<VertexInterface<T>> neghbors = frontVertex.getNeightborIterator();
+            frontVertex.getNeighborIterator();
 
             while(!finished && neighbors.hasNext())
             {
@@ -108,15 +110,10 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
                     nextNeighbor.setCost(frontVertex.getCost());
                     nextNeighbor.setPredecessor(frontVertex);
                     vertexQueue.enqueue(nextNeighbor);
-
-                    
                 }
                 if (nextNeighbor.equals(endVertex))
                         finished = true;
             }
-            
-
-        
         }
         int pathLength = (int)endVertex.getCost();
         path.push(endVertex.getLabel());
@@ -128,9 +125,7 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
             path.push(vertex.getLabel());
         }
 
-        
-        return pathLength;
-        
+        return pathLength;    
    }
 
    public double getCheapestPath(T begin, T end, StackInterface<T> path)
@@ -139,7 +134,7 @@ public class GraphAlgorithms<T> extends GraphInterface<T> implements GraphAlgori
         boolean finished = false;
 
         QueueInterface<EntryPQ> priorityQueue = new QueueInterface<>();
-        VertexInterface<t> originVertex = vertices.getValue();
+        VertexInterface<T> originVertex = vertices.getValue();
         VertexInterface<T> endVertex = vertices.getValue();
 
         priorityQueue.add(new EntryPQ(originVertex, 0, null));
