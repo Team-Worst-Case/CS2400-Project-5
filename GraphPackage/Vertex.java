@@ -195,8 +195,10 @@ public boolean equals(Object other)
       result = false; 
    else
    { // The cast is safe within this else clause @SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked")
        Vertex<T> otherVertex = (Vertex<T>)other; result = label.equals(otherVertex.label);
    } // end if
-return result; } // end equals
+return result; 
+    } // end equals
 } // end Vertex
 
