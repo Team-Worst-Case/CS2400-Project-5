@@ -48,4 +48,20 @@ protected class Edge
    } // end getWeight
 } // end Edge
 
- 
+public T getLabel() {
+   return label;
+
+}
+
+public void visit() {
+   visited = true;
+}
+
+public void unvisit() {
+   visited = false;
+}
+
+public boolean isVisited() {
+   return visited;
+   
+}
