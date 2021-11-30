@@ -18,7 +18,7 @@ class Vertex<T> implements VertexInterface<T>
       visited = false;
       previousVertex = null;
       cost = 0;
-//end constructor
+   }//end constructor
 
 protected class Edge
 {
