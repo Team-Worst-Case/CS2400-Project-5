@@ -1,23 +1,24 @@
+package ADTPackage;
 import java.util.Arrays;
 /**
-    A class of queues whose entries are stored in an array.
+    A class of stacks whose entries are stored in an array.
     @author Frank M. Carrano and Timothy M. Henry
     @version 5.0
 */
-public final class Queue<T> implements QueueInterface<T>
+public final class Stack<T> implements StackInterface<T>
 {
-	private T[] queue;    // Array of queue entries
-	private int frontIndex; // Index of front entry
+	private T[] stack;    // Array of stack entries
+	private int topIndex; // Index of top entry
    private boolean integrityOK = false;
 	private static final int DEFAULT_CAPACITY = 50;
 	private static final int MAX_CAPACITY = 10000;
   
-   public Queue()
+   public Stack()
    {
       this(DEFAULT_CAPACITY);
    }
   
-   public Queue(int initialCapacity)
+   public Stack(int initialCapacity)
    {
       integrityOK = false;
       checkCapacity(initialCapacity);
@@ -25,90 +26,83 @@ public final class Queue<T> implements QueueInterface<T>
       // The cast is safe because the new array contains null entries
       @SuppressWarnings("unchecked")
       T[] tempStack = (T[])new Object[initialCapacity];
-      queue = tempStack;
-		frontIndex = -1;
+      stack = tempStack;
+		topIndex = -1;
       integrityOK = true;
   }
 
-   public void enqueue(T newEntry)
+   public void push(T newEntry)
    {
       checkIntegrity();
       ensureCapacity();
-      queue[frontIndex + 1] = newEntry;
-      frontIndex++;
+      stack[topIndex + 1] = newEntry;
+      topIndex++;
    }
 
    private void ensureCapacity()
    {
-      if (frontIndex >= queue.length - 1) // If array is full, double its size
+      if (topIndex >= stack.length - 1) // If array is full, double its size
       {
-         int newLength = 2 * queue.length;
+         int newLength = 2 * stack.length;
          checkCapacity(newLength);
-         queue = Arrays.copyOf(queue, newLength);
+         stack = Arrays.copyOf(stack, newLength);
       }
    }
 
-   public T dequeue()
+   public T pop()
    {
       checkIntegrity();
       if (isEmpty())
          try {
-            throw new IllegalStateException("Attempted to pop from empty queue.");
+            throw new IllegalStateException("Attempted to pop from empty stack.");
          } catch (IllegalStateException ex) {
             return null;
          }
       else
       {
-         T front = queue[frontIndex];
-         queue[frontIndex] = null;
-         frontIndex--;
-         return front;
+         T top = stack[topIndex];
+         stack[topIndex] = null;
+         topIndex--;
+         return top;
       }
    }
 
-   public T getFront()
+   public T peek()
    {
       checkIntegrity();
       if (isEmpty())
          try {
-            throw new IllegalStateException("Attempted to peek inside empty queue.");
+            throw new IllegalStateException("Attempted to peek inside empty stack.");
          } catch (IllegalStateException ex) {
             return null;
          }
       else
-         return queue[frontIndex];
-   }
-
-   public void display()
-   {
-      for (int i = 0; i < queue.length; i++) {
-         System.out.println(queue[i]);
-      }
+         return stack[topIndex];
    }
 
    public boolean isEmpty()
    {
-      return frontIndex < 0;
+      return topIndex < 0;
    }
    
    public void clear()
    {
       checkIntegrity();
       
-      // Remove references to the objects in the queue,
+      // Remove references to the objects in the stack,
       // but do not deallocate the array
-      while (frontIndex > -1)
+      while (topIndex > -1)
       {
-         queue[frontIndex] = null;
-         frontIndex--;
+         stack[topIndex] = null;
+         topIndex--;
       }
-      //Assertion: frontIndex is -1
+      //Assertion: topIndex is -1
    }
 
    private void checkCapacity(int newLength)
    {
       if (newLength > MAX_CAPACITY)
-         throw new IllegalStateException("Attempted to create queue with capacity greater than " + MAX_CAPACITY);
+         throw new IllegalStateException("Attempted to create stack with capacity greater than " + MAX_CAPACITY);
    }
 
    // Throws an exception if this object is not initialized.

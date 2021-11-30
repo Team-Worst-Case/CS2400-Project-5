@@ -1,6 +1,8 @@
-import org.junit.Test;
-import static org.junit.Assert.*;
-public class  JUnit
+package GraphPackage;
+//import GraphPackage.*;
+/*import org.junit.Test;
+import static org.junit.Assert.*;*/
+public class GraphTest
 {
 	public static void main(String[] args)
 	{
