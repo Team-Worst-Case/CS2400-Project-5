@@ -58,7 +58,6 @@ public class GraphAlgorithms {
             } // All neighbors are visited
             else vertexStack.pop();
         }
-
         return traversalOrder;
    }
 
@@ -68,12 +67,11 @@ public class GraphAlgorithms {
        StackInterface<T> vertexStack = new LinkedStack<>();
        int numberOfVertices = //?;
 
-       for (counter = 1; counter <= numberOfVertices; ++counter);
+       for (int counter = 1; counter <= numberOfVertices; ++counter);
        {
            VertexInterface<T> nextVertex = //?;
            vertexStack.push(nextVertex.getLabel());
        }
-
        return vertexStack;
    }
 
@@ -93,7 +91,7 @@ public class GraphAlgorithms {
         while (!finished && !vertexQueue.isEmpty())
         {
             VertexInterface<T> frontVertex = vertexQueue.dequeue();
-            Iterator<VertexInterface<T>> neghbors = frontVertex.getNeightborIterator();
+            Iterator<VertexInterface<T>> neighbors = frontVertex.getNeightborIterator();
 
             while(!finished && neighbors.hasNext())
             {
@@ -104,17 +102,13 @@ public class GraphAlgorithms {
                     nextNeighbor.visit();
                     nextNeighbor.setCost(frontVertex.getCost());
                     nextNeighbor.setPredecessor(frontVertex);
-                    vertexQueue.enqueue(nextNeighbor);
-
-                    
+                    vertexQueue.enqueue(nextNeighbor);            
                 }
                 if (nextNeighbor.equals(endVertex))
                         finished = true;
-            }
-            
-
-        
+            }  
         }
+
         int pathLength = (int)endVertex.getCost();
         path.push(endVertex.getLabel());
         VertexInterface<T> vertex = endVertex;
@@ -123,11 +117,9 @@ public class GraphAlgorithms {
         {
             vertex = vertex.getPredecessor();
             path.push(vertex.getLabel());
-        }
+        }  
 
-        
-        return pathLength;
-        
+        return pathLength;  
    }
 
    public double getCheapestPath(T begin, T end, StackInterface<T> path)
@@ -136,7 +128,7 @@ public class GraphAlgorithms {
         boolean finished = false;
 
         QueueInterface<EntryPQ> priorityQueue = new QueueInterface<>();
-        VertexInterface<t> originVertex = vertices.getValue(begin);
+        VertexInterface<T> originVertex = vertices.getValue(begin);
         VertexInterface<T> endVertex = vertices.getValue(end);
 
         priorityQueue.add(new EntryPQ(originVertex, 0, null));
@@ -151,8 +143,7 @@ public class GraphAlgorithms {
             {
                 frontVertex.visit();
                 frontVertex.setCost(frontEntry.getCost());
-                frontVertex.setPredecessor(fronEntry.getPredecessor());
-
+                frontVertex.setPredecessor(frontEntry.getPredecessor());
 
                 if (frontVertex.equals(endVertex))
                     finished = true;
@@ -161,7 +152,7 @@ public class GraphAlgorithms {
                     Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
                     Iterator<Double> edgeWeights = frontVertex.getWeightIterator();
 
-                    while(neightbors.hasNext())
+                    while(neighbors.hasNext())
                     {
                         VertexInterface<T> nextNeighbor = neighbors.next();
                         Double weightOfEdgeToNeighbor = edgeWeights.next();
@@ -186,7 +177,6 @@ public class GraphAlgorithms {
             vertex = vertex.getPredecessor();
             path.push(vertex.getLabel());
         }
-
         return pathCost;
    }
    
