@@ -2,8 +2,8 @@ Members: Christopher Gomez, Joseph Setiawan, Roberto Tabares
 
 Contributions:
 Christopher Gomez (key_wii) - queue & stack interfaces
-Joseph Setiawan (setiwon) - 
-Roberto Tabares (RobCT08) - 
+Joseph Setiawan (setiwon) - vertex interface
+Roberto Tabares (RobCT08) - GraphAlgorithms
 
 Extra Features: 
 
