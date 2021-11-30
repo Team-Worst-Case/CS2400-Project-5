@@ -63,5 +63,80 @@ public void unvisit() {
 
 public boolean isVisited() {
    return visited;
-   
+
 }
+
+public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
+    {
+    boolean result = false;
+
+    if (!this.equals(endVertex))
+    {  
+        Iterator<VertexInterface<T>> neighbors = getNeighborIterator();
+        boolean duplicateEdge = false;
+
+        while (!duplicateEdge && neighbors.hasNext())
+        {
+            VertexInterface<T> nextNeighbor = neighbors.next();
+            if (endVertex.equals(nextNeighbor))
+                duplicateEdge = true;
+        } 
+
+        if (!duplicateEdge)
+        {
+            edgeList.add(new Edge(endVertex, edgeWeight));
+            result = true;
+        } 
+    } 
+
+    return result;
+    } 
+
+    public boolean connect(VertexInterface<T> endVertex)
+    {
+        return connect(endVertex, 0);
+    } 
+
+    public Iterator <VertexInterface<T>> getNeighborIterator()
+    {
+       return new NeightborIterator();
+    }
+
+    private class NeighborIterator implements Iterator <VertexInterface<T>>
+    {
+       private Iterator <Edge> edges;
+
+       private NeighborIterator();
+
+       edges = edgeList.iterator();
+      } 
+      
+      public boolean hasNext()
+      {
+          return edges.hasNext();
+      } 
+      
+      public VertexInterface<T> next()
+      {
+          VertexInterface<T> nextNeighbor = null;
+          
+          if (edges.hasNext())
+          {
+              Edge edgeToNextNeighbor = edges.next();
+              nextNeighbor = edgeToNextNeighbor.getEndVertex();
+          }
+          else
+              throw new NoSuchElementException();
+          
+          return nextNeighbor;
+      } 
+      
+      public void remove()
+      {
+          throw new UnsupportedOperationException();
+      }
+  } 
+
+
+    }
+
