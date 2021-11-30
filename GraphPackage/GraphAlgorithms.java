@@ -71,7 +71,7 @@ public class GraphAlgorithms<T> implements GraphAlgorithmsInterface<T> {
        StackInterface<T> vertexStack = new Stack<>();
        int numberOfVertices = getNumberOfVertices();
 
-       for (counter = 1; counter <= numberOfVertices; ++counter);
+       for (int i = 1; i <= numberOfVertices; ++i);
        {
            VertexInterface<T> nextVertex = //?;
            nextVertex.visit();
@@ -144,11 +144,11 @@ public class GraphAlgorithms<T> implements GraphAlgorithmsInterface<T> {
             EntryPQ frontEntry = priorityQueue.remove();
             VertexInterface<T> frontVertex = frontEntry.getVertex();
 
-            if(!frontVertex.isVisited)
+            if(!frontVertex.isVisited())
             {
                 frontVertex.visit();
-                frontVertex.setCost(fronEntry.getCost());
-                frontVertex.setPredecessor(fronEntry.getPredecessor());
+                frontVertex.setCost(frontEntry.getCost());
+                frontVertex.setPredecessor(frontEntry.getPredecessor());
                 
                 if (frontVertex.equals(endVertex))
                 {
@@ -187,5 +187,17 @@ public class GraphAlgorithms<T> implements GraphAlgorithmsInterface<T> {
 
         return pathCost;
    }
+
+    public void resetVertices()
+    {  
+        int len = vertices.size();
+        for (int i = 0; i < len; i++)
+        {
+            Vertex<T> vertex = vertices.get(i);
+            vertex.setPredecessor(null);
+            vertex.unvisit();
+            vertex.setCost(0);
+        }
+    }  
    
 }
