@@ -137,6 +137,10 @@ public boolean connect(VertexInterface<T> endVertex, double edgeWeight)
       } // end remove
   } // end NeighborIterator
 
+@Override
+public Iterator<Double> getWeightIterator() {
+    return null;
+}
 
 public boolean hasNeighbor()
 {
