@@ -231,13 +231,13 @@ public final class Graph<T> implements GraphInterface<T>
 
                     while (neighbors.hasNext())
                     {
-                        VertexInterface<T> nextNeighbor = neighbors.next();
+                        Vertex<T> nextNeighbor = neighbors.next();
                         Double weightOfEdgeToNeighbor = edgeWeights.next();
 
                         if (!nextNeighbor.isVisited())
                         {
                             double nextCost = weightOfEdgeToNeighbor+frontVertex.getCost();
-                            queueVertex.add(nextNeighbor);
+                            queueVertex.enqueue(nextNeighbor);
                         }
                     }
                 }
