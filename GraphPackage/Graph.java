@@ -202,22 +202,23 @@ public final class Graph<T> implements GraphInterface<T>
         resetVertices();
         boolean finished = false;
 
-        QueueInterface<EntryPQ> priorityQueue = new QueueInterface<>();
-        VertexInterface<T> originVertex = vertices[0];
-        VertexInterface<T> endVertex = vertices[vertices.length - 1];
+        Queue<Vertex<T>> queueVertex = new Queue<>();
+        Vertex<T> originVertex = vertices[0];
+        Vertex<T> endVertex = vertices[vertices.length - 1];
 
-        priorityQueue.add(new EntryPQ(originVertex, 0, null));
+        queueVertex.enqueue(originVertex);
 
-        while (!finished && !priorityQueue.isEmpty());
+        while (!finished && !queueVertex.isEmpty());
         {
-            EntryPQ frontEntry = priorityQueue.remove();
-            VertexInterface<T> frontVertex = frontEntry.getVertex();
+            Vertex<T> frontVertex = queueVertex.getFront();
+            queueVertex.dequeue();
+            T frontEntry = frontVertex.getLabel();
 
             if(!frontVertex.isVisited())
             {
                 frontVertex.visit();
-                frontVertex.setCost(frontEntry.getCost());
-                frontVertex.setPredecessor(frontEntry.getPredecessor());
+                frontVertex.setCost(frontVertex.getCost());
+                frontVertex.setPredecessor(frontVertex.getPredecessor());
                 
                 if (frontVertex.equals(endVertex))
                 {
@@ -225,18 +226,18 @@ public final class Graph<T> implements GraphInterface<T>
                 }
                 else
                 {
-                    Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+                    Iterator<Vertex<T>> neighbors = frontVertex.getNeighborIterator();
                     Iterator<Double> edgeWeights = frontVertex.getWeightIterator();
 
                     while (neighbors.hasNext())
                     {
-                        VertexInterface<T> nextNeighbor = neighbors.next();
+                        Vertex<T> nextNeighbor = neighbors.next();
                         Double weightOfEdgeToNeighbor = edgeWeights.next();
 
                         if (!nextNeighbor.isVisited())
                         {
                             double nextCost = weightOfEdgeToNeighbor+frontVertex.getCost();
-                            priorityQueue.add(new EntryPQ(nextNeighbor, nextCost, frontVertex));
+                            queueVertex.add(new EntryPQ(nextNeighbor, nextCost, frontVertex));
                         }
                     }
                 }
@@ -255,6 +256,35 @@ public final class Graph<T> implements GraphInterface<T>
         }
 
         return pathCost;
+        /*resetVertices();
+        begin.setVisited(true);  
+        Queue<Vertex> queue=new Queue<Vertex>();  
+        queue.add(begin);  
+        boolean done=false;  
+        while(!done&&!queue.isEmpty())
+        {  
+            Vertex curVertex=queue.remove(0);  
+            while(!done&&curVertex.getFirstUnvisitedNeighbor()!=null)
+            {  
+                Vertex tmpVertex=curVertex.getFirstUnvisitedNeighbor();  
+                tmpVertex.setVisited(true);  
+                double  tmpCost=curVertex.getCost()+1;  
+                tmpVertex.setPreviousVertex(curVertex);  
+                tmpVertex.setCost(tmpCost);  
+                queue.add(tmpVertex);  
+                if(tmpVertex.equals(end))
+                {  
+                    done=true;  
+                }  
+            }  
+        }  
+        double pathLength=end.getCost();  
+        //find the path.traverse back from end  
+        while(end!=null){  
+            stack.push(end);  
+            end=end.getPreviousVertex();  
+        }  
+        return pathLength;  */
    }
 
     public void resetVertices()
