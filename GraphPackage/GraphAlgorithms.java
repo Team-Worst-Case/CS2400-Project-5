@@ -99,7 +99,7 @@ public class GraphAlgorithms<T> implements GraphAlgorithmsInterface<T> {
         while (!finished && !vertexQueue.isEmpty())
         {
             VertexInterface<T> frontVertex = vertexQueue.dequeue();
-            Iterator<VertexInterface<T>> neghbors = frontVertex.getNeightborIterator();
+            Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
             frontVertex.getNeighborIterator();
 
             while(!finished && neighbors.hasNext())
