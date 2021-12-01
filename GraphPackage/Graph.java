@@ -137,7 +137,7 @@ public final class Graph<T> implements GraphInterface<T>
    {
        //resetVertices();
        StackInterface<T> vertexStack = new Stack<>();
-       int numberOfVertices = getNumberOfVertices();
+       int numberOfVertices = vertices.length;
 
        int i;
        for (i = 1; i <= numberOfVertices; ++i);
