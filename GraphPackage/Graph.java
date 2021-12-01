@@ -226,18 +226,18 @@ public final class Graph<T> implements GraphInterface<T>
                 }
                 else
                 {
-                    Iterator<Vertex<T>> neighbors = frontVertex.getNeighborIterator();
+                    Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
                     Iterator<Double> edgeWeights = frontVertex.getWeightIterator();
 
                     while (neighbors.hasNext())
                     {
-                        Vertex<T> nextNeighbor = neighbors.next();
+                        VertexInterface<T> nextNeighbor = neighbors.next();
                         Double weightOfEdgeToNeighbor = edgeWeights.next();
 
                         if (!nextNeighbor.isVisited())
                         {
                             double nextCost = weightOfEdgeToNeighbor+frontVertex.getCost();
-                            queueVertex.add(new EntryPQ(nextNeighbor, nextCost, frontVertex));
+                            queueVertex.add(nextNeighbor);
                         }
                     }
                 }
