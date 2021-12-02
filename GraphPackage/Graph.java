@@ -1,5 +1,4 @@
 package GraphPackage;
-import GraphPackage.VertexInterface;
 import java.util.Iterator;
 import ADTPackage.*;
 
@@ -35,22 +34,14 @@ public final class Graph<T> implements GraphInterface<T>
     
     public void addVert(int vert)
     {
-        for(int i = 0; i < vertices.length; i++) {
-                if(vertices[i].getLabel() == Integer.valueOf(vert)) {
-                    return;
-                }
-                
-                VertexInterface<T> something = vertices[0];
-                setLabel(vert, something);
-                getLabel(something);
-                vertices = vertices + something;
-                
-               // make vertex :(
-                //set label equal to vert
-                //add the whole vertex into vertices array
-            
+        for(int i = 0; i < vertices.length; i++)
+        {
+            if(vertices[i].getLabel() == Integer.valueOf(vert)) {
+                return;
+            }
         }
-
+        VertexInterface<T> newVert = new VertexInterface<>(vert);
+        vertices[vertices.length] = newVert;
     }
     
     // Add an edge    
