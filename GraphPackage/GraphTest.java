@@ -8,9 +8,9 @@ public class GraphTest
 	{
         //@Test
         //public void testGraphs() {
-            //System.out.println("started... ");
+            System.out.println("\nstarted... \n");
 
-            Graph<String> graphV = new Graph<>();
+            GraphInterface<String> graphV = new Graph<>(0);
             graphV.addEdge(3, 4);
             graphV.addEdge(1, 3);
             graphV.addEdge(3, 2);
