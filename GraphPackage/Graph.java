@@ -6,7 +6,7 @@ public final class Graph<T> implements GraphInterface<T>
 {
     private boolean[] [] edges; // edges[i] [j] is true if there is a vertex from i to j
     private T[] labels; // labels[i] contains the label for vertex i
-    private VertexInterface<T>[] vertices = new VertexInterface[9999];
+    private VertexInterface<T>[] vertices = new VertexInterface<T>[9999];
 
     public Graph(int n)
     {
