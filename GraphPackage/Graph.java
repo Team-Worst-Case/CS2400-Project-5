@@ -6,7 +6,7 @@ public final class Graph<T> implements GraphInterface<T>
 {
     private boolean[] [] edges; // edges[i] [j] is true if there is a vertex from i to j
     private T[] labels; // labels[i] contains the label for vertex i
-    private VertexInterface<T>[] vertices = new VertexInterface<T>[9999];
+    private QueueInterface<T>[] vertices;
 
     public Graph(int n)
     {
@@ -50,7 +50,7 @@ public final class Graph<T> implements GraphInterface<T>
     {
         for(int i = 0; i < vertices.length; i++)
         {
-            if(vertices[i].getLabel() == Integer.valueOf(vert)) {
+            if(vertices[i].getFront() == Integer.valueOf(vert)) {
                 return;
             }
         }
@@ -105,8 +105,8 @@ public final class Graph<T> implements GraphInterface<T>
         QueueInterface<T> traversalOrder = new Queue<T>();
         QueueInterface<VertexInterface<T>> vertexQueue = new Queue<VertexInterface<T>>();
 
-        VertexInterface<T> originVertex = vertices[0];
-        originVertex.visit();
+        QueueInterface<T> originVertex = vertices[0];
+        originVertex.dequeue();
         traversalOrder.enqueue(origin);     // enqueue vertex label
         vertexQueue.enqueue(originVertex);  // enqueue vertex
 
@@ -137,7 +137,7 @@ public final class Graph<T> implements GraphInterface<T>
         QueueInterface<T> traversalOrder = new Queue<T>();
         StackInterface<VertexInterface<T>> vertexStack = new Stack<> ();
 
-        VertexInterface<T> originVertex = vertices[0];
+        QueueInterface<T> originVertex = vertices[0];
         originVertex.visit();
         traversalOrder.enqueue(origin); //Enqueue vertex label
         vertexStack.push(originVertex); //Enqueue vertex
@@ -183,10 +183,10 @@ public final class Graph<T> implements GraphInterface<T>
         boolean finished = false;
 
         QueueInterface<VertexInterface<T>> vertexQueue = new Queue<>();
-        VertexInterface<T> originVertex = vertices[0];
-        VertexInterface<T> endVertex = vertices[vertices.length - 1];
+        QueueInterface<T> originVertex = vertices[0];
+        QueueInterface<T> endVertex = vertices[vertices.length - 1];
 
-        originVertex.visit();
+        originVertex.getFront();
         vertexQueue.enqueue(originVertex);
 
         while (!finished && !vertexQueue.isEmpty())
@@ -229,8 +229,8 @@ public final class Graph<T> implements GraphInterface<T>
         boolean finished = false;
 
         Queue<VertexInterface<T>> queueVertex = new Queue<>();
-        VertexInterface<T> originVertex = vertices[0];
-        VertexInterface<T> endVertex = vertices[vertices.length - 1];
+        QueueInterface<T> originVertex = vertices[0];
+        QueueInterface<T> endVertex = vertices[vertices.length - 1];
 
         queueVertex.enqueue(originVertex);
 
@@ -289,7 +289,7 @@ public final class Graph<T> implements GraphInterface<T>
         int len = vertices.length;
         for (int i = 0; i < len; i++)
         {
-            VertexInterface<T> vertex = vertices[i];
+            QueueInterface<T> vertex = vertices[i];
             vertex.setPredecessor(null);
             vertex.unvisit();
             vertex.setCost(0);
