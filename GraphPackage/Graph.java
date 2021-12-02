@@ -49,15 +49,15 @@ public final class Graph<T> implements GraphInterface<T>
     
     public void addVert(int vert)
     {
-        for(int i = 0; i < vertices.length; i++)
+        for(int i = 0; i < vertices.size(); i++)
         {
-            if(vertices[i].getLabel() == Integer.valueOf(vert)) {
+            if(vertices.get(i).getLabel() == Integer.valueOf(vert)) {
                 return;
             }
         }
         //VertexInterface<T> newVert = new VertexInterface<>();
         Vertex newVert = new Vertex(vert);
-        vertices[vertices.length] = newVert;
+        vertices.get(vertices.length) = newVert;
     }
 
     // Obtain a list of neighbors of a specified vertex of this Graph    
@@ -106,7 +106,7 @@ public final class Graph<T> implements GraphInterface<T>
         QueueInterface<T> traversalOrder = new Queue<T>();
         QueueInterface<VertexInterface<T>> vertexQueue = new Queue<VertexInterface<T>>();
 
-        VertexInterface<T> originVertex = vertices[0];
+        VertexInterface<T> originVertex = vertices.get(0);
         originVertex.visit();
         traversalOrder.enqueue(origin);     // enqueue vertex label
         vertexQueue.enqueue(originVertex);  // enqueue vertex
