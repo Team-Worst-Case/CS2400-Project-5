@@ -6,7 +6,7 @@ public final class Graph<T> implements GraphInterface<T>
 {
     private boolean[] [] edges; // edges[i] [j] is true if there is a vertex from i to j
     private T[] labels; // labels[i] contains the label for vertex i
-    private VertexInterface<T>[] vertices;
+    private VertexInterface<T>[] vertices = new VertexInterface[9999];
 
     public Graph(int n)
     {
@@ -30,6 +30,20 @@ public final class Graph<T> implements GraphInterface<T>
     public void addEdge(int source, int target) 
     {        
         edges[source][target] = true;    
+        addVert(source);
+        addVert(target);
+    }
+    
+    // Add an edge    
+    public void addEdge(String source, String target) 
+    {        
+        char charSource = source.charAt(0);
+        char charTarget = target.charAt(0);
+        int intSource = Character.getNumericValue(charSource);
+        int intTarget = Character.getNumericValue(charTarget);
+        edges[intSource][intTarget] = true;    
+        addVert(intSource);
+        addVert(intTarget);
     }
     
     public void addVert(int vert)
@@ -40,16 +54,9 @@ public final class Graph<T> implements GraphInterface<T>
                 return;
             }
         }
-        VertexInterface<T> newVert = new VertexInterface<>(vert);
+        //VertexInterface<T> newVert = new VertexInterface<>();
+        Vertex newVert = new Vertex(vert);
         vertices[vertices.length] = newVert;
-    }
-    
-    // Add an edge    
-    public void addEdge(String source, String target) 
-    {        
-        char charSource = source.charAt(0);
-        char charTarget = target.charAt(0);
-        edges[Character.getNumericValue(charSource)][Character.getNumericValue(charTarget)] = true;    
     }
 
     // Obtain a list of neighbors of a specified vertex of this Graph    
