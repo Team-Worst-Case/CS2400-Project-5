@@ -34,9 +34,11 @@ public final class Graph<T> implements GraphInterface<T>
     }
     
     // Add an edge    
-    public void addEdge(T source, T target) 
+    public void addEdge(String source, String target) 
     {        
-        edges[source][target] = true;    
+        char charSource = source.charAt(0);
+        char charTarget = target.charAt(0);
+        edges[Character.getNumericValue(charSource)][Character.getNumericValue(charTarget)] = true;    
     }
 
     // Obtain a list of neighbors of a specified vertex of this Graph    

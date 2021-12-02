@@ -8,7 +8,7 @@ public class GraphTest
 	{
         System.out.println("\nstarted... \n");
 
-        GraphInterface<String> graphV = new Graph<>(5);
+        GraphInterface<Integer> graphV = new Graph<>(5);
         graphV.addEdge(3, 4);
         graphV.addEdge(1, 3);
         graphV.addEdge(3, 2);
@@ -28,7 +28,7 @@ public class GraphTest
         graphV.addEdge("C", "B");*/
 
         System.out.println("Breadth-first traversal of graph with A as starting vertex:");
-        //System.out.println(graphV.getBreadthFirstTraversal("A"));
+        System.out.println(graphV.getBreadthFirstTraversal(Integer.valueOf(1)));
     }
 
     public void testGetTopologicalOrder() {
