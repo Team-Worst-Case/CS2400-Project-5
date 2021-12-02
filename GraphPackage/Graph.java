@@ -32,6 +32,12 @@ public final class Graph<T> implements GraphInterface<T>
     {        
         edges[source][target] = true;    
     }
+    
+    // Add an edge    
+    public void addEdge(T source, T target) 
+    {        
+        edges[source][target] = true;    
+    }
 
     // Obtain a list of neighbors of a specified vertex of this Graph    
     public int[] neighbors(int vertex) 
