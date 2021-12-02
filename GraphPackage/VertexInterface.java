@@ -2,8 +2,6 @@ package GraphPackage;
 import java.util.Iterator;
 public interface VertexInterface<T>
 {
-  public void Vertex(T vertexLabel);
-
   /** Gets this vertex's label.
     @return The object that labels the vertex. */
   public T getLabel(); 
