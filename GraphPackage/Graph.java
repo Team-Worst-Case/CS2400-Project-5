@@ -102,7 +102,7 @@ public final class Graph<T> implements GraphInterface<T>
     
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
-        resetVertices();
+        //resetVertices();
         QueueInterface<T> traversalOrder = new Queue<T>();
         QueueInterface<VertexInterface<T>> vertexQueue = new Queue<VertexInterface<T>>();
 
@@ -134,7 +134,7 @@ public final class Graph<T> implements GraphInterface<T>
    public QueueInterface<T> getDepthFirstTraversal(T origin)
    {
         //Assume graph is not empty
-        resetVertices();
+        //resetVertices();
         QueueInterface<T> traversalOrder = new Queue<T>();
         StackInterface<VertexInterface<T>> vertexStack = new Stack<> ();
 
@@ -179,7 +179,7 @@ public final class Graph<T> implements GraphInterface<T>
 
    public int getShortestPath(T begin, T end, StackInterface<T> path)
    {
-        resetVertices();
+        //resetVertices();
 
         boolean finished = false;
 
@@ -226,7 +226,7 @@ public final class Graph<T> implements GraphInterface<T>
 
    public double getCheapestPath(T begin, T end, StackInterface<T> path)
    {
-        resetVertices();
+        //resetVertices();
         boolean finished = false;
 
         Queue<VertexInterface<T>> queueVertex = new Queue<>();

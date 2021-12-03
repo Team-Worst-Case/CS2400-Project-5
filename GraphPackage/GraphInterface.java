@@ -27,6 +27,11 @@ public interface GraphInterface<T>// extends GraphAlgorithmsInterface<T>//, Basi
    public void addEdge(int source, int target);
 
    /** 
+      @param source 
+      @param target  */
+   public void addEdge(String source, String target);
+
+   /** 
       @return 
       @param vertex  */
    public T getLabel(int vertex);

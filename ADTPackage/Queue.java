@@ -10,7 +10,7 @@ public final class Queue<T> implements QueueInterface<T>
 	private T[] queue;    // Array of queue entries
 	private int frontIndex; // Index of front entry
    private boolean integrityOK = false;
-	private static final int DEFAULT_CAPACITY = 50;
+	private static final int DEFAULT_CAPACITY = 1;
 	private static final int MAX_CAPACITY = 10000;
   
    public Queue()
