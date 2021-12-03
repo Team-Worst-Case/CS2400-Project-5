@@ -30,6 +30,7 @@ public class GraphTest
 
         System.out.println("Breadth-first traversal of graph with A as starting vertex:");
         //graphNum.getBreadthFirstTraversal(Integer.valueOf(1)).display();
+        Vertex ver = new Vertex("A");
         graphV.getBreadthFirstTraversal(Integer.valueOf(Character.getNumericValue('A'))).display();
         graphV.getDepthFirstTraversal(Integer.valueOf(Character.getNumericValue('A'))).display();
     }

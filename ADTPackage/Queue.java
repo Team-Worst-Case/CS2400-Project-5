@@ -1,5 +1,6 @@
 package ADTPackage;
 import java.util.Arrays;
+import java.util.LinkedList;
 /**
     A class of queues whose entries are stored in an array.
     @author Frank M. Carrano and Timothy M. Henry
@@ -104,6 +105,11 @@ public final class Queue<T> implements QueueInterface<T>
          frontIndex--;
       }
       //Assertion: frontIndex is -1
+   }
+
+   public int size()
+   {
+      return frontIndex;
    }
 
    private void checkCapacity(int newLength)
