@@ -184,11 +184,11 @@ public final class Graph<T> implements GraphInterface<T>
         boolean finished = false;
 
         QueueInterface<VertexInterface<T>> vertexQueue = new Queue<>();
-        VertexInterface<T> originVertex = vertices.get(0);
-        VertexInterface<T> endVertex = vertices.get(vertices.size() - 1);
+        VertexInterface<T> endVertex = vertices.get(0);
+        VertexInterface<T> originVertex = vertices.get(vertices.size() - 1);
 
-        originVertex.visit();
-        vertexQueue.enqueue(originVertex);
+        endVertex.visit();
+        vertexQueue.enqueue(endVertex);
 
         while (!finished && !vertexQueue.isEmpty())
         {
@@ -211,7 +211,7 @@ public final class Graph<T> implements GraphInterface<T>
                         finished = true;
             }
         }
-        int pathLength = (int)endVertex.getCost();
+        int pathLength = (int)originVertex.getCost();
         path.push(endVertex.getLabel());
         VertexInterface<T> vertex = endVertex;
 
