@@ -7,7 +7,7 @@ public final class Graph<T> implements GraphInterface<T>
 {
     private boolean[] [] edges; // edges[i] [j] is true if there is a vertex from i to j
     private T[] labels; // labels[i] contains the label for vertex i
-    ArrayList<T> vertices = new ArrayList<T>();
+    ArrayList<VertexInterface<T>> vertices = new ArrayList<>();
 
     public Graph(int n)
     {
@@ -55,9 +55,9 @@ public final class Graph<T> implements GraphInterface<T>
                 return;
             }
         }
-        //VertexInterface<T> newVert = new VertexInterface<>();
+        //VertexInterface<T> newVert = new VertexInterface<>(vert);
         Vertex newVert = new Vertex(vert);
-        vertices.get(vertices.length) = newVert;
+        vertices.add(newVert);
     }
 
     // Obtain a list of neighbors of a specified vertex of this Graph    
@@ -138,7 +138,7 @@ public final class Graph<T> implements GraphInterface<T>
         QueueInterface<T> traversalOrder = new Queue<T>();
         StackInterface<VertexInterface<T>> vertexStack = new Stack<> ();
 
-        VertexInterface<T> originVertex = vertices[0];
+        VertexInterface<T> originVertex = vertices.get(0);
         originVertex.visit();
         traversalOrder.enqueue(origin); //Enqueue vertex label
         vertexStack.push(originVertex); //Enqueue vertex
@@ -164,12 +164,12 @@ public final class Graph<T> implements GraphInterface<T>
    {
        //resetVertices();
        StackInterface<T> vertexStack = new Stack<>();
-       int numberOfVertices = vertices.length;
+       int numberOfVertices = vertices.size();
 
        int i;
        for (i = 1; i <= numberOfVertices; ++i);
        {
-           VertexInterface<T> nextVertex = vertices[i].getUnvisitedNeighbor();
+           VertexInterface<T> nextVertex = vertices.get(i).getUnvisitedNeighbor();
            nextVertex.visit();
            vertexStack.push(nextVertex.getLabel());
        }
@@ -184,8 +184,8 @@ public final class Graph<T> implements GraphInterface<T>
         boolean finished = false;
 
         QueueInterface<VertexInterface<T>> vertexQueue = new Queue<>();
-        VertexInterface<T> originVertex = vertices[0];
-        VertexInterface<T> endVertex = vertices[vertices.length - 1];
+        VertexInterface<T> originVertex = vertices.get(0);
+        VertexInterface<T> endVertex = vertices.get(vertices.size() - 1);
 
         originVertex.visit();
         vertexQueue.enqueue(originVertex);
@@ -230,8 +230,8 @@ public final class Graph<T> implements GraphInterface<T>
         boolean finished = false;
 
         Queue<VertexInterface<T>> queueVertex = new Queue<>();
-        VertexInterface<T> originVertex = vertices[0];
-        VertexInterface<T> endVertex = vertices[vertices.length - 1];
+        VertexInterface<T> originVertex = vertices.get(0);
+        VertexInterface<T> endVertex = vertices.get(vertices.size() - 1);
 
         queueVertex.enqueue(originVertex);
 
@@ -287,10 +287,9 @@ public final class Graph<T> implements GraphInterface<T>
 
     public void resetVertices()
     {  
-        int len = vertices.length;
-        for (int i = 0; i < len; i++)
+        for (int i = 0; i < vertices.size(); i++)
         {
-            VertexInterface<T> vertex = vertices[i];
+            VertexInterface<T> vertex = vertices.get(i);
             vertex.setPredecessor(null);
             vertex.unvisit();
             vertex.setCost(0);
