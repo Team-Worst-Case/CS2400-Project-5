@@ -30,7 +30,7 @@ public class GraphTest
 
         System.out.println("Breadth-first traversal of graph with A as starting vertex:");
         //graphNum.getBreadthFirstTraversal(Integer.valueOf(1)).display();
-        graphV.getBreadthFirstTraversal(Integer.valueOf("A")).display();
+        graphV.getBreadthFirstTraversal(Integer.valueOf(Character.getNumericValue('A'))).display();
     }
 
     public void testGetTopologicalOrder() {

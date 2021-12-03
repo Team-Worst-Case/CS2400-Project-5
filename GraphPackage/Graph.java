@@ -42,7 +42,7 @@ public final class Graph<T> implements GraphInterface<T>
         char charTarget = target.charAt(0);
         int intSource = Character.getNumericValue(charSource);
         int intTarget = Character.getNumericValue(charTarget);
-        edges[intSource][intTarget] = true;    
+        //edges[intSource][intTarget] = true;    
         addVert(intSource);
         addVert(intTarget);
     }
