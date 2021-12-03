@@ -29,7 +29,7 @@ public class GraphTest
         graphV.addEdge("C", "B");*/
 
         System.out.println("Breadth-first traversal of graph with A as starting vertex:");
-        System.out.println(graphNum.getBreadthFirstTraversal(Integer.valueOf(1)));
+        graphNum.getBreadthFirstTraversal(Integer.valueOf(1)).display();
         //System.out.println(graphV.getBreadthFirstTraversal(String.valueOf("A")));
     }
 
