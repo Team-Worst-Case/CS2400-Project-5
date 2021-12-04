@@ -5,6 +5,9 @@ Christopher Gomez (key_wii) - queue & stack interfaces, debugging, JUnit/Driver,
 Joseph Setiawan (setiwon) - VertexInterface, debugging
 Roberto Tabares (RobCT08) - GraphAlgorithms methods (now deleted), debugging
 
+Used adjacency matrix
+run code using GraphTest
+
 Extra Features: screencast
 
 Screencast: https://youtu.be/Yq27ueNCQFc
