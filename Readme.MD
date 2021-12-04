@@ -1,11 +1,11 @@
 Members: Christopher Gomez, Joseph Setiawan, Roberto Tabares
 
 Contributions:
-Christopher Gomez (key_wii) - queue & stack interfaces, debugging, JUnit
-Joseph Setiawan (setiwon) - vertex interface, debugging
-Roberto Tabares (RobCT08) - GraphAlgorithms, debugging
+Christopher Gomez (key_wii) - queue & stack interfaces, debugging, JUnit/Driver, Graph methods
+Joseph Setiawan (setiwon) - VertexInterface, debugging
+Roberto Tabares (RobCT08) - GraphAlgorithms methods (now deleted), debugging
 
-Extra Features: Robust Vertex implementation, screencast, generic data types
+Extra Features: screencast
 
 Screencast: 
 
