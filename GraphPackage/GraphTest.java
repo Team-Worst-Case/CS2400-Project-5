@@ -6,14 +6,7 @@ public class GraphTest
 {
 	public static void main(String[] args)
 	{
-        System.out.println("\nstarted... \n");
-
-        //GraphInterface<Integer> graphNum = new Graph<>(5);
         GraphInterface<Integer> graphV = new Graph<>(14);
-        /*graphNum.addEdge(3, 4);
-        graphNum.addEdge(1, 3);
-        graphNum.addEdge(3, 2);
-        graphNum.addEdge(2, 1);*/
         graphV.addEdge("A", "B");
         graphV.addEdge("A", "D");
         graphV.addEdge("A", "E");
@@ -29,9 +22,8 @@ public class GraphTest
         graphV.addEdge("C", "B");
 
         System.out.println("Breadth-first traversal of graph with A as starting vertex:");
-        //graphNum.getBreadthFirstTraversal(Integer.valueOf(1)).display();
-        Vertex ver = new Vertex("A");
         graphV.getBreadthFirstTraversal(Integer.valueOf(Character.getNumericValue('A'))).display();
+        System.out.println("Depth-first traversal of graph with A as starting vertex:");
         graphV.getDepthFirstTraversal(Integer.valueOf(Character.getNumericValue('A'))).display();
     }
 

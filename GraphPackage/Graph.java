@@ -61,12 +61,13 @@ public final class Graph<T> implements GraphInterface<T>
             while (temp2.size() > 0)
             {
                 if(tempVert.getLabel() == temp2.dequeue()) {
-                    System.out.println("exit " + newVert.getLabel() + " ");
+                    //System.out.println("exit " + newVert.getLabel() + " ");
+                    return;
                 }
             }
         }
         
-        System.out.println(newVert.getLabel() + " ");
+        //System.out.println(newVert.getLabel() + " ");
         vertices.enqueue(newVert);
     }
 
@@ -146,11 +147,10 @@ public final class Graph<T> implements GraphInterface<T>
    public QueueInterface<T> getDepthFirstTraversal(T origin)
    {
         //Assume graph is not empty
-        //resetVertices();
-        /*QueueInterface<T> traversalOrder = new Queue<T>();
+        QueueInterface<T> traversalOrder = new Queue<T>();
         StackInterface<VertexInterface<T>> vertexStack = new Stack<> ();
 
-        VertexInterface<T> originVertex = vertices.get(0);
+        VertexInterface<T> originVertex = vertices.getFront();
         originVertex.visit();
         traversalOrder.enqueue(origin); //Enqueue vertex label
         vertexStack.push(originVertex); //Enqueue vertex
@@ -169,7 +169,6 @@ public final class Graph<T> implements GraphInterface<T>
             else vertexStack.pop();
         }
 
-        return traversalOrder;*/
-        return new Queue<T>();
+        return traversalOrder;
    }
 }
